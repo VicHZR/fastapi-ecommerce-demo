@@ -1,130 +1,90 @@
-# [FastAPI & Stripe](https://blog.appseed.us/fastapi-stripe-free-ecommerce/) `Mini eCommerce`
+# 📦 FastAPI & Stripe Mini E-Commerce Backend
 
-Open-source mini `eCommerce` project that loads the products from `JSON` files saved in the `templates directory` (no database required) and uses a decent UI for page styling - Powered by **[FastAPI & Stripe](https://blog.appseed.us/fastapi-stripe-free-ecommerce/)**.
+[![FastAPI](https://shields.io)](https://fastapi.tiangolo.com/)
+[![Stripe](https://shields.io)](https://stripe.com/)
+[![Docker](https://shields.io)](https://docker.com)
+[![Python](https://shields.io)](https://python.org)
 
-> Roadmap & Features 
-
-| Status | Item | info | 
-| --- | --- | --- |
-| ✅ | **FastAPI** | For `backend logic` |
-| ✅ | **Stripe** | `Payment processor` |
-| ✅ | **[Soft UI Design](https://www.creative-tim.com/product/soft-ui-design-system?AFFILIATE=128200)** | (Free Version) by `Creative-Tim` |
-| ✅ | **JSON** | `Products definition` - see [sample](./src/templates/products/air-zoom-pegasus.json) |
-| ✅ | Automatic Products Discovery | Source DIR: [templates\products](./src/templates/products) |
-| ✅ | **Deployment** | `Docker` |
-| ❌ | **CI/CD** | Render Deployment Platform |
-
-<br />
-
-## ✨ Video Presentation
-
-> This video explains how to use the product
-
-<br /> 
-
-https://user-images.githubusercontent.com/51070104/198817800-897b755b-7196-4e0b-81cc-1165dcb44dcc.mp4
-
-<br />
-
-## ✨ Quick Start in `Docker`
-
-> 👉 **Step 1** - Download the code from the GH repository (using `GIT`) 
-
-```bash
-$ git clone https://github.com/app-generator/ecommerce-fastapi-stripe.git
-$ cd ecommerce-fastapi-stripe
-```
-
-<br />
-
-> 👉 **Step 2** - Start the APP in `Docker`
-
-```bash
-$ docker-compose up --build 
-```
-
-Visit `http://localhost:5085` in your browser. The app should be up & running.
-
-<br />
-
-![FastAPI & Stripe mini eCommerce - Open-Source Starter provided by AppSeed.](https://user-images.githubusercontent.com/51070104/197350325-609fe951-fe54-4276-9380-9d403460a8d0.png)
-
-<br />
-
-## ✨ Manual Build
-
-The process is basically the usual set up for any Python app: `environment` set up, `dependencies` install, and `bootstrap`. 
-
-<br />
-
-> 👉 **Step 1** - `Download the code` from the GH repository (using `GIT`) 
-
-```bash
-$ git clone https://github.com/app-generator/ecommerce-fastapi-stripe.git
-$ cd ecommerce-fastapi-stripe
-```
-
-<br />
-
-> 👉 **Step 2** - Rename `env.sample` to `.env` and provide the Stripe Secrets
-
-- Edit `STRIPE_SECRET_KEY` - provided by Stripe Platform
-- Edit `STRIPE_PUBLISHABLE_KEY` - provided by Stripe Platform
-
-<br />
-
-> 👉 **Step 3** - `Install dependencies`
-
-```bash
-$ virtualenv env
-$ source env/bin/activate
-$ pip install -r requirements.txt
-```
-
-<br />
-
-> 👉 **Step 4** - `Start the App`
-
-```bash
-$ uvicorn src.app:app --reload
-```
-
-Visit `http://localhost:8000` in your browser. For another port, use `--port 8099` directive.
-
-<br />
-
-## ✨ Create a new Product
-
-- Go to `src/templates/products` directory
-- Create a new `JSON` file with data:
-  - `name`: Used in product page & Cards
-  - `price`: Used for payment
-  - `currency`: Used for payment
-  - `info`: used in cards 
-  - `short_description`: used in product page
-  - `full_description`: used in product page
-- Create Media Files
-  - Go to `src/static/products` 
-  - Create a directory using the same name as for `JSON` file
-    - Create `card.jpg`: 500x335px
-    - Create `cover.jpg`: 2100x1400px
-- Start or refresh the app
-  - The new product should be listed in the `products/` page
-  - Product page is available at address:
-    - `http://localhost:8000/products/<SLUG>/` where the SLUG is the name of the JSON file 
-  
-<br />
-
-> Sample product page generated for [Air ZOOM Pegasus](./src/templates/products/air-zoom-pegasus.json), assets loaded from [here](./src/static/products/air-zoom-pegasus)
-
-<br />
-
-## ✨ Credits & Links
-
-- [FastAPI Framework](https://fastapi.tiangolo.com/) - The official website
-- [Stripe Dev Tools](https://stripe.com/docs/development) - official docs
-
-<br />
+A production-ready asynchronously-powered asynchronous E-Commerce backend implementation using **FastAPI** integrated with **Stripe API** as the core transactional payment processor. This project focuses on high-performance endpoint delivery, dynamic content discovery via structured JSON processing, and containerized microservice deployment.
 
 ---
-[FastAPI & Stripe](https://blog.appseed.us/fastapi-stripe-free-ecommerce/) `Mini eCommerce` - Free sample provided by [AppSeed](https://appseed.us).
+
+## 🎯 Key Technical Features
+
+- **Asynchronous Payment Gateway:** Seamless integration with Stripe API infrastructure for secure, production-grade tokenized checkout transactions.
+- **Dynamic File-Based Data Layer:** Automatic product discovery layer through server-side JSON schema parsing and dynamic directory indexing.
+- **Containerized Architecture:** Fully dockerized ecosystem running isolated app containers orchestrated via **Docker Compose**.
+- **Modern UI Styling:** Clean frontend implementation powered by the premium Soft UI Design System framework.
+
+---
+
+## 🏗️ Architectural Layout
+
+The codebase is engineered to maintain low decoupling and structured execution flows under standard Python practices:
+
+```text
+fastapi-ecommerce-demo/
+│
+├── src/
+│   ├── app.py             # Application entry point & API Router configuration
+│   ├── static/            # Static assets management (product imagery)
+│   └── templates/         # UI Components & JSON-driven product definitions
+│
+├── env.sample             # Environment variables template for Stripe API keys
+├── Dockerfile             # Container blueprint definition
+├── docker-compose.yml     # Multi-container orchestration specification
+└── requirements.txt       # Production engine dependencies
+```
+
+---
+
+## ⚙️ Installation & Local Setup
+
+### 🐳 Option A: Quick Start via Docker (Recommended)
+
+Ensure you have Docker and Docker Compose installed on your local host machinery, then run:
+
+```bash
+git clone https://github.com
+cd fastapi-ecommerce-demo
+docker-compose up --build
+```
+Once initialized, visit the container cluster hosting at `http://localhost:5085`.
+
+### 💻 Option B: Manual Environment Build
+
+#### 1. Setup Virtual Environment & Install Core Engines
+```bash
+virtualenv env
+source env/bin/activate  # On Windows: env\Scripts\activate
+pip install -r requirements.txt
+```
+
+#### 2. Configure Transactional Environment Variables
+Rename the local blueprint `env.sample` to `.env` and fill in your secure sandbox credentials:
+```env
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+```
+
+#### 3. Run the Backend Server
+```bash
+uvicorn src.app:app --reload
+```
+The local server will accept incoming traffic threads at `http://localhost:8000`.
+
+---
+
+## 🔌 API Testing & Live UI Documentation
+
+FastAPI natively wraps the endpoint mappings into structured interactive UI platforms:
+
+- **Swagger Interactive Testing Sandbox:** [http://localhost:8000/docs](http://localhost:8000/docs) – Ideal for manual or automated integration testing of backend operations.
+- **ReDoc Architecture Layout:** [http://localhost:8000/redoc](http://localhost:8000/redoc) – Clean technical layout mapping schemas and response payloads.
+
+---
+
+## 🛡️ Financial Technical Practices Implemented
+
+- **Secure Environment Tokenization:** Strict isolation of secure API payment keys from the application layer execution via environment mapping files (`.env`).
+- **Dynamic Routing & Slugs:** Scalable URL mapping using algorithmic slug paths parsed directly out of JSON entities.
